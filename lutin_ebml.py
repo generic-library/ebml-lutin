@@ -80,7 +80,8 @@ def create(target, module_name):
 		],
 		destination_path="ebml/c")
 	my_module.add_module_depend([
-	    'cxx'
+	    'cxx',
+	    'pthread'
 	    ])
 	my_module.compile_version("C++", 2003)
 	return my_module
