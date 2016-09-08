@@ -79,7 +79,7 @@ def create(target, module_name):
 	    'ebml/ebml/c/libebml_t.h',
 		],
 		destination_path="ebml/c")
-	my_module.add_module_depend([
+	my_module.add_depend([
 	    'cxx',
 	    'pthread'
 	    ])
