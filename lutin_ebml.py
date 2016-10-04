@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import lutin.module as module
+import lutin.debug as debug
 import lutin.tools as tools
 
 
@@ -18,8 +18,7 @@ def get_maintainer():
 def get_version():
 	return [1,3,4]
 
-def create(target, module_name):
-	my_module = module.Module(__file__, module_name, get_type())
+def configure(target, my_module):
 	my_module.add_src_file([
 	    'ebml/src/EbmlHead.cpp',
 	    'ebml/src/EbmlCrc32.cpp',
@@ -44,7 +43,7 @@ def create(target, module_name):
 	    'ebml/src/SafeReadIOCallback.cpp',
 	    'ebml/src/EbmlMaster.cpp',
 	    'ebml/src/EbmlElement.cpp',
-		])
+	    ])
 	my_module.add_header_file([
 	    'ebml/ebml/EbmlMaster.h',
 	    'ebml/ebml/EbmlHead.h',
@@ -73,17 +72,17 @@ def create(target, module_name):
 	    'ebml/ebml/EbmlId.h',
 	    'ebml/ebml/SafeReadIOCallback.h',
 	    'ebml/ebml/EbmlVersion.h',
-		],
-		destination_path="ebml")
+	    ],
+	    destination_path="ebml")
 	my_module.add_header_file([
 	    'ebml/ebml/c/libebml_t.h',
-		],
-		destination_path="ebml/c")
+	    ],
+	    destination_path="ebml/c")
 	my_module.add_depend([
 	    'cxx',
 	    'pthread'
 	    ])
 	my_module.compile_version("C++", 2003)
-	return my_module
+	return True
 
 
